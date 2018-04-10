@@ -1,0 +1,34 @@
+{
+  "name": "gulp-preview-util",
+  "version": "1.0.0",
+  "description": "found this on: https://gist.github.com/sogko/b53d33d4f3b40d3b4b2e",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": {
+    "name": "",
+    "email": "",
+    "url": ""
+  },
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.8.2"
+  },
+  "devDependencies": {
+    "assemble": "^0.24.3",
+    "browser-sync": "^2.17.5",
+    "glob": "^7.1.1",
+    "gulp": "^3.9.1",
+    "gulp-extname": "^0.2.2",
+    "gulp-file-include": "^1.0.0",
+    "gulp-filenames": "^4.0.1",
+    "gulp-hb": "^7.0.1",
+    "gulp-inline-css": "^3.1.0",
+    "gulp-inline-source": "^3.1.0",
+    "gulp-mailgun": "0.0.7",
+    "gulp-sass": "^4.0.1",
+    "gulp-template": "^4.0.0",
+    "gulp-util": "^3.0.7"
+  }
+}
