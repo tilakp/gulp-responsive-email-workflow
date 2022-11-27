@@ -26,14 +26,14 @@
             <!-- BEGIN DIVIDERS -->
             <h2>Dividers</h2>
             <p>
-              <code>&#123;&#123;&gt; divider &#125;&#125;</code>
+              <code>&#123;&#123; divider() &#125;&#125;</code>
             </p>
             {{ divider() }}
             
             <!-- BEGIN NOTICES -->
             <h2>Notices</h2>
             <p>
-              <code>&#123;&#123;&gt; notice type='info' text='Your Text Here' &#125;&#125;</code>
+              <code>&#123;&#123; notice( type='info', text='Your Text Here') &#125;&#125;</code>
             </p>
             {{ notice(type='info', text='Hello, this is a <strong>info</strong> notice.') }}
             {{ notice (type='success', text='Hello, this is a <strong>success</strong> notice.') }}
@@ -45,7 +45,7 @@
             <!-- BEGIN BUTTONS -->
             <h2>Buttons</h2>
             <p>
-              <code>&#123;&#123;&gt; button type='primary' url='Absolute URL' title='Button Text Here' &#125;&#125;</code>
+              <code>&#123;&#123; button( type='primary', url='Absolute URL', title='Button Text Here') &#125;&#125;</code>
             </p>
             {{ button (type='primary', url='https://github.com/leemunroe/grunt-email-workflow', title='Button (primary)') }}
             {{ button (type='secondary', url='https://github.com/leemunroe/grunt-email-workflow', title='Button (secondary)') }}
@@ -55,7 +55,7 @@
             <!-- BEGIN CHARTS -->
             <h2>Charts (<a href="https://image-charts.com/documentation">documentation</a>)</h2>
             <p>
-              <code>&#123;&#123;&gt; chart width='534' height='200' params='cht=lc&chd=s:cEAELFJHHHKUju9uuXUc&chco=76A4FB&chls=2.0,0.0,0.0&chxt=x,y&chxl=0:|0|1|2|3|4|5|1:|0|50|100&chg=20,50' alt='beautiful chart' &#125;&#125;</code>
+              <code>&#123;&#123; chart( width='534', height='200', params='cht=lc&chd=s:cEAELFJHHHKUju9uuXUc&chco=76A4FB&chls=2.0,0.0,0.0&chxt=x,y&chxl=0:|0|1|2|3|4|5|1:|0|50|100&chg=20,50', alt='beautiful chart') &#125;&#125;</code>
             </p>
             {{ chart (width='534', height='200', params='cht=lc&chd=s:cEAELFJHHHKUju9uuXUc&chco=76A4FB&chls=2.0,0.0,0.0&chxt=x,y&chxl=0:|0|1|2|3|4|5|1:|0|50|100&chg=20,50', alt='beautiful chart') }}
 
