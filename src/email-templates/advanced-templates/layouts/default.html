@@ -13,7 +13,9 @@
 	<tr>
 		<td></td>
 		<td class="container">
-			<div class="content">{{> body }}</div>
+			<div class="content">
+				{% block content %}{% endblock %}
+			</div>
 		</td>
 		<td></td>
 	</tr>

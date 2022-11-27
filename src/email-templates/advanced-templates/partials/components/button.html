@@ -1,13 +1,15 @@
+{% macro button(type, align='', url='', title='') %}
 <table class="btn btn-{{ type }}" cellpadding="0" cellspacing="0">
   <tr>
     <td align="{{ align }}">
       <table cellpadding="0" cellspacing="0">
         <tr>
           <td>
-            <a href="{{ url }}">{{{ title }}}</a>
+            <a href="{{ url }}">{{ title }}</a>
           </td>
         </tr>
       </table>
     </td>
   </tr>
 </table>
+{% endmacro %}

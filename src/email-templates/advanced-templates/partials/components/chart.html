@@ -1,0 +1,9 @@
+{% macro chart(align, width, height, params, alt) %}
+<table class="chart" cellpadding="0" cellspacing="0">
+  <tr>
+    <td align="{{ align }}">
+      <img width="{{ width }}" src="https://image-charts.com/chart?chs={{ width }}x{{ height }}&amp;{{ params }}" alt="{{ alt }}" />
+    </td>
+  </tr>
+</table>
+{% endmacro %}

@@ -1,7 +1,8 @@
----
-layout: default.hbs
-subject: Simple Transactional Email
----
+{% from "partials/components/button.html" import button %}
+{% extends "layouts/default.html" %} 
+{% set page_name = 'Simple Transactional Email' %}
+
+{% block content %}
 <span class="preheader">This is preheader text. Some clients will show this text as a preview.</span>
 <table class="main">
   <tr>
@@ -28,7 +29,7 @@ subject: Simple Transactional Email
                   <table>
                     <tr>
                       <td>
-                        <a href="http://www.leemunroe.com">Call to action</a>
+                        <a href="http://www.amazon.com">Call to action</a>
                       </td>
                     </tr>
                   </table>
@@ -37,12 +38,12 @@ subject: Simple Transactional Email
             </table>
 
             -->
-
-            {{> button type='primary' align='center' url='https://github.com/leemunroe/grunt-email-workflow' title='View the source on GitHub' }}
             
+            {{ button('primary', 'center', 'https://github.com/tilakp/gulp-responsive-email-workflow', 'View the source on GitHub') }}
+
+
             <p>Feel free to use, copy, modify this email template as you wish.</p>
             <p>Thanks, have a lovely day.</p>
-            <p>{{> follow_lee }}</p>
           </td>
         </tr>
       </table>
@@ -58,3 +59,4 @@ subject: Simple Transactional Email
     </tr>
   </table>
 </div>
+{% endblock %}
