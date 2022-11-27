@@ -38,7 +38,7 @@ gulp.task('styles', async function() {
 });
 
 gulp.task('images', async function() {
-    gulp.src('src/hb-templates/img/**/*.png')
+    gulp.src('src/email-templates/advanced-templates/img/**/*.png')
         .pipe(gulp.dest('build/img/'));
 });
 
@@ -50,6 +50,12 @@ gulp.task('build-advanced-templates', gulp.series('styles', 'images', async func
             })
         )
         .pipe(beautify.html({ indent_size: 4, preserve_newlines: false }))
+        .pipe(inlineSource({
+            rootpath: 'build'
+        }))
+        .pipe(inlineCss({
+            preserveMediaQueries: true
+        }))
         .pipe(gulp.dest('build'));
 }));
 
