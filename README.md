@@ -15,6 +15,18 @@ which should open it in a browser and you can selected some templates and play w
 
 If you want to run a specific steps, you can see targets defined in gulpfile and run them directly e.g., `gulp build-advanced-templates`
 
+If for some reason you get an error that some file was not found or something, you can run all steps manually to make sure right files are created, e.g.,
+```
+gulp build-basic-templates
+gulp styles
+gulp images
+gulp build-advanced-templates
+gulp preview-sass
+gulp preview-img
+gulp build-preview
+gulp
+```
+
 ## Project Structure
 ### src/preview
 It contains "preview functionality" that Lee Munroe has put together in his tutorial (see "Inspirations#1") and it is used as a base to test various templates. There is gulp target that does its magic and will output files in `preview` directory to keep email templates separate. 
