@@ -1,3 +1,21 @@
+/* ---------------------------------------------------------
+ * In order to run this project, follow these instructions
+ *
+ *   1. Build preview functionality first:
+ *   `gulp build-preview`
+ * 
+ *   2. Now create templates
+ *   `gulp build-basic-templates`
+ *   `gulp build-advanced-templates`
+ *
+ *   3. Next, inline css styles (so you don't have to load css files in email clients)
+ *   `gulp inline-source`
+ *   
+ *   4. Finally, run it in browser
+ *   `gulp execute`
+ * ---------------------------------------------------------
+ */
+
 var gulp = require('gulp');
 var browserSync = require('browser-sync').create();
 var reload = browserSync.reload;
@@ -32,17 +50,17 @@ gulp.task('build-basic-templates', async function() {
 });
 
 gulp.task('styles', async function() {
-    gulp.src('src/email-templates/advanced-templates/css/**/*.scss')
+    return gulp.src('src/email-templates/advanced-templates/css/**/*.scss')
         .pipe(sass().on('error', sass.logError))
         .pipe(gulp.dest('build/css/'));
 });
 
 gulp.task('images', async function() {
-    gulp.src('src/email-templates/advanced-templates/img/**/*.png')
+    return gulp.src('src/email-templates/advanced-templates/img/**/*.png')
         .pipe(gulp.dest('build/img/'));
 });
 
-gulp.task('build-advanced-templates', gulp.series('styles', 'images', async function() {
+gulp.task('generate-html-templates', async function() {
     return gulp.src('src/email-templates/advanced-templates/emails/*.+(html|njk)')
         .pipe(
             njk({
@@ -50,6 +68,22 @@ gulp.task('build-advanced-templates', gulp.series('styles', 'images', async func
             })
         )
         .pipe(beautify.html({ indent_size: 4, preserve_newlines: false }))
+        // .pipe(inlineSource({
+        //     rootpath: 'build'
+        // }))
+        // .pipe(inlineCss({
+        //     preserveMediaQueries: true
+        // }))
+        .pipe(gulp.dest('build/temp'));
+});
+
+gulp.task('build-advanced-templates', gulp.series('styles', 'images', 'generate-html-templates'));
+
+
+// this is a separate task since inlineSource isn't working
+// and haven't figure out why 
+gulp.task('inline-source', async function(){
+    return gulp.src('build/temp/*.html')
         .pipe(inlineSource({
             rootpath: 'build'
         }))
@@ -57,7 +91,7 @@ gulp.task('build-advanced-templates', gulp.series('styles', 'images', async func
             preserveMediaQueries: true
         }))
         .pipe(gulp.dest('build'));
-}));
+});
 
 gulp.task('preview-sass', async function(){
   return gulp.src('./src/preview/scss/*.scss')
@@ -71,7 +105,7 @@ gulp.task('preview-img', async function(){
 });
 
 // Build Preview
-gulp.task('build-preview', gulp.series('preview-sass', 'preview-img',  async function() {
+gulp.task('preview-html', async function() {
     glob("./build/*.html", {}, function(er, files) {
         var templates = files.map(function(file) {
             var pathArray = file.split("/");
@@ -89,7 +123,9 @@ gulp.task('build-preview', gulp.series('preview-sass', 'preview-img',  async fun
             }))
             .pipe(gulp.dest('./preview'));
     });
-}));
+});
+
+gulp.task('build-preview', gulp.series('preview-sass', 'preview-img', 'preview-html'));
 
 // Static server
 gulp.task('browser-sync', gulp.series('build-preview', async function() {
@@ -121,7 +157,5 @@ gulp.task('watch', async function() {
     gulp.watch('./**/*.css', reload);
 });
 
-// handle bar doesn't work still so removed it for now
-gulp.task('default',
-    gulp.series('build-basic-templates', 'build-advanced-templates', 'build-preview', 'browser-sync', 'watch'));
+gulp.task('execute', gulp.series('browser-sync', 'watch'));
 
