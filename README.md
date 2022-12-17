@@ -3,7 +3,13 @@ Gulp.js based workflow to build and test responsive html templates.
 
 ## Overview
 
-This is a very simple gulp based workflow to create and test responsive email templates locally. If you are beginner like me, install `node`, `npm` and `gulp` first.
+This is a very simple gulp based workflow to create and test responsive email templates locally. If you are beginner like me, install `node` and `gulp` first.
+
+Once installed, you can clone repository and install dependencies:
+```bash
+git clone https://github.com/tilakp/gulp-responsive-email-workflow
+npm install
+```
 
 After installation, you can run it like:
 ```bash
